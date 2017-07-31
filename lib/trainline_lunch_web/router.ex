@@ -16,7 +16,6 @@ defmodule TrainlineLunchWeb.Router do
   scope "/", TrainlineLunchWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
     get "/piplettes", PageController, :piplettes
     get "/cocottes", PageController, :cocottes
   end
