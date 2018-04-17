@@ -19,7 +19,7 @@ defmodule TrainlineLunch.Mixfile do
   def application do
     [
       mod: {TrainlineLunch.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :calendar]
     ]
   end
 
@@ -38,7 +38,8 @@ defmodule TrainlineLunch.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:facebook, "~> 0.9.0"}
+      {:facebook, "~> 0.9.0"},
+      {:calendar, "~> 0.17.2"},
     ]
   end
 end

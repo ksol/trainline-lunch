@@ -48,7 +48,10 @@ defmodule TrainlineLunchWeb.PageController do
   end
 
   def formatted_date({:ok, datetime, _}) do
-    string = datetime |> DateTime.to_string
+    string = datetime
+    |> shift_zone!("Europe/Paris")
+    |> Calendar.Strftime.strftime!("%d/%m/%Y %H:%M")
+
     " (#{string})"
   end
 
@@ -58,6 +61,15 @@ defmodule TrainlineLunchWeb.PageController do
 
   def formatted_date(data) do
     data["created_time"] |> DateTime.from_iso8601 |> formatted_date
+  end
+
+  defp shift_zone!(nil, _time_zone) do
+    nil
+  end
+
+  defp shift_zone!(timestamp, time_zone) do
+    timestamp
+    |> Calendar.DateTime.shift_zone!(time_zone)
   end
 
   defp og_tags(title, data) do
