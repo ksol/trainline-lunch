@@ -40,11 +40,12 @@ defmodule TrainlineLunchWeb.PageController do
   end
 
   defp format(message) do
-    if message["full_picture"] do
-      "#{message["message"]} - #{message["full_picture"]}"
-    else
-      message["message"]
-    end
+    text    = message["message"]
+    picture = message["full_picture"]
+
+    [text, picture]
+    |> Enum.reject(&is_nil/1)
+    |> Enum.join(" - ")
   end
 
   def formatted_date({:ok, datetime, _}) do
