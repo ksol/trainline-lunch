@@ -18,6 +18,7 @@ defmodule TrainlineLunchWeb.Router do
 
     get "/piplettes", PageController, :piplettes
     get "/cocottes", PageController, :cocottes
+    get "/tour_thai", PageController, :tour_thai
   end
 
   # Other scopes may use custom stacks.

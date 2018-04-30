@@ -25,6 +25,17 @@ defmodule TrainlineLunchWeb.PageController do
     render conn, "show.html", message: message, og_tags: tags
   end
 
+  def tour_thai(conn, _params) do
+    data = "tourdethai"
+      |> get_last_message("created_time,message,full_picture")
+      |> extract_relevant
+
+    message = format(data)
+    tags = og_tags("Tour de Thaï", data)
+
+    render conn, "show.html", message: message, og_tags: tags
+  end
+
   defp get_last_message(page_id) do
     page_id |> Facebook.page(System.get_env("FB_TOKEN"), "posts.order(reverse_chronological).limit(1){created_time,message}")
   end
