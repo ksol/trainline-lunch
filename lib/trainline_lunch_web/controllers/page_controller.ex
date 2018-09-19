@@ -86,7 +86,7 @@ defmodule TrainlineLunchWeb.PageController do
 
   defp og_tags(title, data) do
     tags = %{
-      "og:site_name" => "Trailine Europe — MANGER",
+      "og:site_name" => "Trainline Europe — MANGER",
       "og:title" => "#{title}#{formatted_date(data)}",
       "og:description" => data["message"],
       "og:image" => data["full_picture"]
