@@ -25,6 +25,17 @@ defmodule TrainlineLunchWeb.PageController do
     render conn, "show.html", message: message, og_tags: tags
   end
 
+  def valerio(conn, _params) do
+    data = "valeriotrattoria"
+      |> get_last_message("created_time,message,full_picture")
+      |> extract_relevant
+
+    message = format(data)
+    tags = og_tags("Valerio", data)
+
+    render conn, "show.html", message: message, og_tags: tags
+  end
+
   def tour_thai(conn, _params) do
     data = "tourdethai"
       |> get_last_message("created_time,message,full_picture")
